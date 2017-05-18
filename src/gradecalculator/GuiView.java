@@ -6,6 +6,7 @@
 package gradecalculator;
 
 import java.awt.event.ActionListener;
+import java.util.regex.Pattern;
 import javax.swing.InputVerifier;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
@@ -14,6 +15,9 @@ import javax.swing.table.DefaultTableModel;
 
 class TextVerifier extends InputVerifier {
 
+    private Pattern patternString;
+    private Pattern patternInteger;
+
     public TextVerifier() {
     }
 
@@ -21,10 +25,12 @@ class TextVerifier extends InputVerifier {
     public boolean verify(JComponent input) {
 
         String name = input.getName();
+        patternString = Pattern.compile("^[A-Za-z, ]++$");  //to validate just strings
+        patternInteger = Pattern.compile("\\d+"); //to validate just integers
 
         if (name.equals("txtName") || name.equals("txtSurname")) {
             String text = ((JTextField) input).getText().trim();
-            if (text.isEmpty()) {
+            if (!patternString.matcher(text).matches() || text.isEmpty()) {
                 return false;
             }
 
@@ -32,7 +38,7 @@ class TextVerifier extends InputVerifier {
 
         if (name.equals("txtFirstScore") || name.equals("txtSecondScore") || name.equals("txtThirthScore")) {
             String text = ((JTextField) input).getText();
-            if (text.isEmpty()) {
+            if (!patternInteger.matcher(text).matches() || text.isEmpty()) {
                 return false;
             }
 
@@ -44,7 +50,7 @@ class TextVerifier extends InputVerifier {
 
         if (name.equals("txtSkill") || name.equals("txtAbsence") || name.equals("txtHomework")) {
             String text = ((JTextField) input).getText();
-            if (text.isEmpty()) {
+            if (!patternInteger.matcher(text).matches() ||text.isEmpty()) {
                 return false;
             }
 
