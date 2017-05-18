@@ -5,10 +5,7 @@
  */
 package gradecalculator;
 
-import java.util.Scanner;
-import java.util.ArrayList;
-import javax.swing.DefaultListModel;
-import javax.swing.JTextField;
+
 
 /**
  *
@@ -25,110 +22,70 @@ public class CalculatorController {
     }
 
     public void setStudentName() {
-        model.setStudentName(view.getTxt_name());
+        model.setStudentName(view.getTxtName());
     }
 
     public String getStudentName() {
-        return view.getTxt_name();
+        return view.getTxtName();
     }
 
     public void setStudentSurname() {
-        model.setStudentSurname(view.getTxt_surname());
+        model.setStudentSurname(view.getTxtSurname());
     }
 
     public String getStudentSurname() {
-        return view.getTxt_surname();
+        return view.getTxtSurname();
     }
 
     public void setFirstScore() {
-        model.setFirstScore(view.getTxt_first_score());
+        model.setFirstScore(view.getTxtFirstScore());
     }
 
     public int getFirstScore() {
-        return view.getTxt_first_score();
+        return view.getTxtFirstScore();
     }
 
     public void setSecondScore() {
-        model.setSecondScore(view.getTxt_second_score());
+        model.setSecondScore(view.getTxtSecondScore());
     }
 
     public int getSecondScore() {
-        return view.getTxt_second_score();
+        return view.getTxtSecondScore();
     }
 
     public void setThirthScore() {
-        model.setThirthScore(view.getTxt_thirth_score());
+        model.setThirthScore(view.getTxtThirthScore());
     }
 
     public int getThirthScore() {
-        return view.getTxt_thirth_score();
+        return view.getTxtThirthScore();
     }
 
     public void setAbsence() {
-        model.setAbsenceScore(view.getTxt_absence());
+        model.setAbsenceScore(view.getTxtAbsence());
     }
 
     public int getAbsence() {
-        return view.getTxt_absence();
+        return view.getTxtAbsence();
     }
 
     public void setHomework() {
-        model.setHomeworkScore(view.getTxt_homework());
+        model.setHomeworkScore(view.getTxtHomework());
     }
 
     public int getHomework() {
-        return view.getTxt_homework();
+        return view.getTxtHomework();
     }
 
     public void setSkill() {
-        model.setSkillScore(view.getTxt_skill());
+        model.setSkillScore(view.getTxtSkill());
     }
 
     public int getSkill() {
-        return view.getTxt_skill();
+        return view.getTxtSkill();
     }
 
     /**
      * @param args the command line arguments
      */
-    // static ArrayList<StudentModel> studentList = new ArrayList<>();
-//    private static final int MIN_EXAM_SCORE = 0;
-//    private static final int MAX_EXAM_SCORE = 100;
-//    private static final int MIN_SKILL_SCORE = 0;
-//    private static final int MAX_SKILL_SCORE = 5;
-//    private static final int LIMIT = 70;
-//    public static int examScoreController(int scoreToCheck) {
-//
-//        while (scoreToCheck > MAX_EXAM_SCORE || scoreToCheck < MIN_EXAM_SCORE) {
-//            System.out.println("Enter a number between 0-100");
-//            System.out.print("First Exam Score: ");
-//            scoreToCheck = Integer.parseInt(scanner.nextLine());
-//
-//        }
-//        return scoreToCheck;
-//    }
-//
-//    public static int skillScoreController(int scoreToCheck) {
-//        while (scoreToCheck > MAX_SKILL_SCORE || scoreToCheck < MIN_SKILL_SCORE) {
-//            System.out.println("Enter a number between 0-5");
-//            System.out.print("Score: ");
-//            scoreToCheck = Integer.parseInt(scanner.nextLine());
-//
-//        }
-//        return scoreToCheck;
-//
-//    }
-//
-//    public boolean calculator() {
-//        int examAverage = (firstScore + secondScore + thirthScore) / 3;
-//        int skillAverage = (skillScore + absenceScore + homeworkScore) / 3;
-//
-//        return examAverage + skillAverage >= LIMIT;
-//    }
-//
-//    public static void validInputController(JTextField name, JTextField surname, JTextField firstScore,
-//            JTextField secondScore, JTextField thirthScore, JTextField skill, JTextField absence,
-//            JTextField homework) {
-//
-//    }
 }

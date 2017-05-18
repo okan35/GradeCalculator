@@ -5,26 +5,70 @@
  */
 package gradecalculator;
 
-import java.awt.List;
 import java.awt.event.ActionListener;
-import javax.swing.DefaultListModel;
+import javax.swing.InputVerifier;
+import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author pc
- */
+class TextVerifier extends InputVerifier {
+
+    public TextVerifier() {
+    }
+
+    @Override
+    public boolean verify(JComponent input) {
+
+        String name = input.getName();
+
+        if (name.equals("txtName") || name.equals("txtSurname")) {
+            String text = ((JTextField) input).getText().trim();
+            if (text.isEmpty()) {
+                return false;
+            }
+
+        }
+
+        if (name.equals("txtFirstScore") || name.equals("txtSecondScore") || name.equals("txtThirthScore")) {
+            String text = ((JTextField) input).getText();
+            if (text.isEmpty()) {
+                return false;
+            }
+
+            int score = Integer.parseInt(((JTextField) input).getText());
+            if (score > 100 || score < 0) {
+                return false;
+            }
+        }
+
+        if (name.equals("txtSkill") || name.equals("txtAbsence") || name.equals("txtHomework")) {
+            String text = ((JTextField) input).getText();
+            if (text.isEmpty()) {
+                return false;
+            }
+
+            int score = Integer.parseInt(((JTextField) input).getText());
+            if (score > 5 || score < 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+}
+
 public class GuiView extends javax.swing.JFrame {
 
     /**
-     * Creates new form NewJFrame
+     * Creates new form GuiView2
      */
-    private DefaultListModel student_list_model = new DefaultListModel();
     private StudentModel theModel = new StudentModel();
     private CalculatorController theController = new CalculatorController(theModel, this);
-    
+    private TextVerifier verifier = new TextVerifier();
+    DefaultTableModel tableModel;
+
     public GuiView() {
         initComponents();
     }
@@ -38,44 +82,42 @@ public class GuiView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbl_name = new javax.swing.JLabel();
-        lbl_surname = new javax.swing.JLabel();
-        txt_name = new javax.swing.JTextField();
-        txt_surname = new javax.swing.JTextField();
-        lbl_first_score = new javax.swing.JLabel();
-        lbl_second_score = new javax.swing.JLabel();
-        lbl_thirth_score = new javax.swing.JLabel();
-        txt_first_score = new javax.swing.JTextField();
-        txt_second_score = new javax.swing.JTextField();
-        txt_thirth_score = new javax.swing.JTextField();
+        txtThirthScore = new javax.swing.JTextField();
         lbl_skill = new javax.swing.JLabel();
         lbl_absence = new javax.swing.JLabel();
         lbl_homework = new javax.swing.JLabel();
-        txt_skill = new javax.swing.JTextField();
-        txt_absence = new javax.swing.JTextField();
-        txt_homework = new javax.swing.JTextField();
+        txtSkill = new javax.swing.JTextField();
+        txtAbsence = new javax.swing.JTextField();
+        txtHomework = new javax.swing.JTextField();
         btn_calculate = new javax.swing.JButton();
         btn_add_student = new javax.swing.JButton();
+        lbl_name = new javax.swing.JLabel();
+        lbl_surname = new javax.swing.JLabel();
+        txtName = new javax.swing.JTextField();
+        txtSurname = new javax.swing.JTextField();
+        lbl_first_score = new javax.swing.JLabel();
+        lbl_second_score = new javax.swing.JLabel();
+        lbl_thirth_score = new javax.swing.JLabel();
+        txtFirstScore = new javax.swing.JTextField();
+        txtSecondScore = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        student_list = new javax.swing.JList<>();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lbl_name.setText("Name");
-
-        lbl_surname.setText("Surname");
-
-        lbl_first_score.setText("1.Exam");
-
-        lbl_second_score.setText("2.Exam");
-
-        lbl_thirth_score.setText("3.Exam");
+        txtThirthScore.setName("txtThirthScore"); // NOI18N
 
         lbl_skill.setText("Skill");
 
         lbl_absence.setText("Absence");
 
         lbl_homework.setText("Homework");
+
+        txtSkill.setName("txtSkill"); // NOI18N
+
+        txtAbsence.setName("txtAbsence"); // NOI18N
+
+        txtHomework.setName("txtHomework"); // NOI18N
 
         btn_calculate.setText("Calculate");
 
@@ -91,48 +133,75 @@ public class GuiView extends javax.swing.JFrame {
             }
         });
 
-        student_list.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        lbl_name.setText("Name");
+
+        lbl_surname.setText("Surname");
+
+        txtName.setName("txtName"); // NOI18N
+
+        txtSurname.setName("txtSurname"); // NOI18N
+
+        lbl_first_score.setText("1.Exam");
+
+        lbl_second_score.setText("2.Exam");
+
+        lbl_thirth_score.setText("3.Exam");
+
+        txtFirstScore.setName("txtFirstScore"); // NOI18N
+
+        txtSecondScore.setName("txtSecondScore"); // NOI18N
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Name", "Surname", "1.Exam", "2.Exam", "3.Exam", "Skill", "Absencel", "Homework", "Result"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
-        student_list.setLayoutOrientation(javax.swing.JList.VERTICAL_WRAP);
-        student_list.setVisibleRowCount(1);
-        jScrollPane1.setViewportView(student_list);
+        jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(80, 80, 80)
-                .addComponent(btn_add_student)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 231, Short.MAX_VALUE)
-                .addComponent(btn_calculate)
-                .addGap(61, 61, 61))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(44, 44, 44)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbl_thirth_score)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txt_thirth_score, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lbl_second_score)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txt_second_score))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbl_first_score)
-                                    .addComponent(lbl_name))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_name)
-                                    .addComponent(txt_first_score))))
-                        .addGap(67, 67, 67)
+                        .addGap(68, 68, 68)
+                        .addComponent(btn_add_student))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(lbl_thirth_score)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(txtThirthScore))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(lbl_second_score)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(txtSecondScore))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lbl_first_score)
+                                .addComponent(lbl_name))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtFirstScore, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 295, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(153, 153, 153)
+                        .addComponent(btn_calculate))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl_skill)
                             .addComponent(lbl_homework)
@@ -140,15 +209,16 @@ public class GuiView extends javax.swing.JFrame {
                             .addComponent(lbl_absence, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txt_absence, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                            .addComponent(txt_skill, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_surname, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_homework, javax.swing.GroupLayout.Alignment.LEADING))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txtAbsence, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtSkill, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtSurname, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtHomework, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(42, 42, 42))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {lbl_absence, lbl_homework, lbl_skill, lbl_surname});
-
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -157,72 +227,190 @@ public class GuiView extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl_name)
-                            .addComponent(txt_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl_first_score)
-                            .addComponent(txt_first_score, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtFirstScore, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_second_score, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtSecondScore, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_second_score))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl_thirth_score)
-                            .addComponent(txt_thirth_score, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtThirthScore, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_surname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtSurname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_surname))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_skill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtSkill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_skill))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_absence, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAbsence, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_absence))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_homework, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtHomework, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_homework))))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_calculate)
                     .addComponent(btn_add_student))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btn_add_studentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_add_studentMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_add_studentMouseClicked
+
     private void btn_add_studentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add_studentActionPerformed
         // TODO add your handling code here:
-        
-        student_list_model.addElement(theController.getStudentName());
-        student_list_model.addElement(theController.getStudentSurname());
-        student_list_model.addElement(theController.getFirstScore());
-        student_list_model.addElement(theController.getSecondScore());
-        student_list_model.addElement(theController.getThirthScore());
-        student_list_model.addElement(theController.getSkill());
-        student_list_model.addElement(theController.getAbsence());
-        student_list_model.addElement(theController.getHomework());
+        String txtNameTable;
+        String txtSurnameTable;
+        int txtFirstScoreTable;
+        int txtSecondScoreTable;
+        int txtThirthScoreTable;
+        int txtSkillTable;
+        int txtHomeworkTable;
+        int txtAbsenceTable;
 
-        
-        student_list.setModel(student_list_model);
-        student_list.setSelectedIndex(0);
-        student_list.setLayoutOrientation(1);
-        student_list.setVisibleRowCount(-1);
+        if (verifier.verify(txtName)) {
+            txtNameTable = txtName.getText();
+        } else {
+            JOptionPane.showMessageDialog(null, "Name can not be empty");
+            txtName.setText("");
+            return;
+        }
+        if (verifier.verify(txtSurname)) {
+            txtSurnameTable = txtSurname.getText();
+        } else {
+            JOptionPane.showMessageDialog(null, "Surname can not be empty");
+            txtSurname.setText("");
+            return;
+        }
+
+        if (verifier.verify(txtFirstScore)) {
+            txtFirstScoreTable = Integer.parseInt(txtFirstScore.getText());
+        } else {
+            JOptionPane.showMessageDialog(null, "First score should be between 0-100 and can not be empty");
+            txtFirstScore.setText("");
+            return;
+        }
+
+        if (verifier.verify(txtSecondScore)) {
+            txtSecondScoreTable = Integer.parseInt(txtSecondScore.getText());
+        } else {
+            JOptionPane.showMessageDialog(null, "Second score should be between 0-100 and can not be empty");
+            txtSecondScore.setText("");
+            return;
+        }
+
+        if (verifier.verify(txtThirthScore)) {
+            txtThirthScoreTable = Integer.parseInt(txtThirthScore.getText());
+        } else {
+            JOptionPane.showMessageDialog(null, "Thirth score should be between 0-100 and can not be empty");
+            txtThirthScore.setText("");
+            return;
+        }
+
+        if (verifier.verify(txtSkill)) {
+            txtSkillTable = Integer.parseInt(txtSkill.getText());
+        } else {
+            JOptionPane.showMessageDialog(null, "Skill score should between 0-5 and can not be empty");
+            txtSkill.setText("");
+            return;
+        }
+
+        if (verifier.verify(txtAbsence)) {
+            txtAbsenceTable = Integer.parseInt(txtAbsence.getText());
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Absence score should between 0-5 and can not be empty");
+            txtAbsence.setText("");
+            return;
+
+        }
+
+        if (verifier.verify(txtHomework)) {
+            txtHomeworkTable = Integer.parseInt(txtHomework.getText());
+
+            int result = ((getTxtFirstScore() + getTxtSecondScore() + getTxtThirthScore()) / 3) + ((getTxtSkill() + getTxtAbsence() + getTxtHomework()) / 3);
+
+            Object[] row = {txtNameTable, txtSurnameTable, txtFirstScoreTable, txtSecondScoreTable, txtThirthScoreTable,
+                txtSkillTable, txtAbsenceTable, txtHomeworkTable, result};
+
+            tableModel = (DefaultTableModel) jTable1.getModel();
+
+            tableModel.addRow(row);
+            txtFieldCleaner();
+        } else {
+            JOptionPane.showMessageDialog(null, "Homework score should between 0-5 and can not be empty");
+            txtHomework.setText("");
+            return;
+        }
+
 
     }//GEN-LAST:event_btn_add_studentActionPerformed
 
-    private void btn_add_studentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_add_studentMouseClicked
-        // TODO add your handling code here:
-        
+    void txtFieldCleaner() {
+        txtAbsence.setText("");
+        txtFirstScore.setText("");
+        txtHomework.setText("");
+        txtName.setText("");
+        txtSecondScore.setText("");
+        txtSkill.setText("");
+        txtSurname.setText("");
+        txtThirthScore.setText("");
+    }
 
-    }//GEN-LAST:event_btn_add_studentMouseClicked
+    public String getTxtName() {
+        return txtName.getText();
+    }
+
+    public String getTxtSurname() {
+        return txtSurname.getText();
+    }
+
+    public int getTxtFirstScore() {
+        return Integer.parseInt(txtFirstScore.getText());
+    }
+
+    public int getTxtSecondScore() {
+        return Integer.parseInt(txtSecondScore.getText());
+    }
+
+    public int getTxtThirthScore() {
+        return Integer.parseInt(txtThirthScore.getText());
+    }
+
+    public int getTxtHomework() {
+        return Integer.parseInt(txtHomework.getText());
+    }
+
+    public int getTxtSkill() {
+        return Integer.parseInt(txtSkill.getText());
+    }
+
+    public int getTxtAbsence() {
+        return Integer.parseInt(txtAbsence.getText());
+    }
+
+    void addCalculateListener(ActionListener listenForCalculation) {
+        btn_calculate.addActionListener(listenForCalculation);
+    }
+
+    void displayErrorMessage(String errorMessage) {
+        JOptionPane.showMessageDialog(this, errorMessage);
+    }
 
     /**
      * @param args the command line arguments
@@ -241,38 +429,31 @@ public class GuiView extends javax.swing.JFrame {
 //                }
 //            }
 //        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(GuiView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(GuiView2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(GuiView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(GuiView2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(GuiView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(GuiView2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(GuiView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(GuiView2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        }
-//        //</editor-fold>
-//        //</editor-fold>
-//        //</editor-fold>
-//        //</editor-fold>
-//        //</editor-fold>
-//        //</editor-fold>
-//        //</editor-fold>
 //        //</editor-fold>
 //
 //        /* Create and display the form */
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {
-//                new GuiView().setVisible(true);
+//                new GuiView2().setVisible(true);
 //            }
 //        });
 //    }
     public void run() {
         new GuiView().setVisible(true);
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_add_student;
     private javax.swing.JButton btn_calculate;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbl_absence;
     private javax.swing.JLabel lbl_first_score;
     private javax.swing.JLabel lbl_homework;
@@ -281,55 +462,13 @@ public class GuiView extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_skill;
     private javax.swing.JLabel lbl_surname;
     private javax.swing.JLabel lbl_thirth_score;
-    private javax.swing.JList<String> student_list;
-    private javax.swing.JTextField txt_absence;
-    private javax.swing.JTextField txt_first_score;
-    private javax.swing.JTextField txt_homework;
-    private javax.swing.JTextField txt_name;
-    private javax.swing.JTextField txt_second_score;
-    private javax.swing.JTextField txt_skill;
-    private javax.swing.JTextField txt_surname;
-    private javax.swing.JTextField txt_thirth_score;
+    private javax.swing.JTextField txtAbsence;
+    private javax.swing.JTextField txtFirstScore;
+    private javax.swing.JTextField txtHomework;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtSecondScore;
+    private javax.swing.JTextField txtSkill;
+    private javax.swing.JTextField txtSurname;
+    private javax.swing.JTextField txtThirthScore;
     // End of variables declaration//GEN-END:variables
-
-    public String getTxt_name() {
-        return txt_name.getText();
-    }
-    
-    public String getTxt_surname() {
-        return txt_surname.getText();
-    }
-    
-    public int getTxt_first_score() {
-        return Integer.parseInt(txt_first_score.getText());
-    }
-    
-    public int getTxt_second_score() {
-        return Integer.parseInt(txt_second_score.getText());
-    }
-    
-    public int getTxt_thirth_score() {
-        return Integer.parseInt(txt_thirth_score.getText());
-    }
-    
-    public int getTxt_homework() {
-        return Integer.parseInt(txt_homework.getText());
-    }
-    
-    public int getTxt_skill() {
-        return Integer.parseInt(txt_skill.getText());
-    }
-    
-    public int getTxt_absence() {
-        return Integer.parseInt(txt_absence.getText());
-    }
-    
-    void addCalculateListener(ActionListener listenForCalculation) {
-        btn_calculate.addActionListener(listenForCalculation);
-    }
-    
-    void displayErrorMessage(String errorMessage) {
-        JOptionPane.showMessageDialog(this, errorMessage);
-    }
-    
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -24,57 +24,64 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
-              <Component id="btn_add_student" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="231" max="32767" attributes="0"/>
-              <Component id="btn_calculate" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                  <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lbl_thirth_score" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="txt_thirth_score" pref="134" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="lbl_second_score" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="txt_second_score" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lbl_first_score" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lbl_name" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txt_name" max="32767" attributes="0"/>
-                                  <Component id="txt_first_score" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
+              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                      <Component id="btn_add_student" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="lbl_thirth_score" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="txtThirthScore" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lbl_skill" linkSize="2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lbl_homework" linkSize="2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lbl_surname" linkSize="2" alignment="0" min="-2" pref="64" max="-2" attributes="0"/>
-                          <Component id="lbl_absence" linkSize="2" alignment="0" min="-2" pref="64" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="lbl_second_score" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="txtSecondScore" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="txt_absence" alignment="0" pref="166" max="32767" attributes="0"/>
-                          <Component id="txt_skill" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txt_surname" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txt_homework" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lbl_first_score" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_name" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txtName" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
+                              <Component id="txtFirstScore" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="295" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="153" pref="153" max="-2" attributes="0"/>
+                      <Component id="btn_calculate" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lbl_skill" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_homework" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_surname" alignment="0" min="-2" pref="64" max="-2" attributes="0"/>
+                          <Component id="lbl_absence" alignment="0" min="-2" pref="64" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="txtAbsence" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtSkill" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtSurname" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtHomework" alignment="0" min="-2" pref="166" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jScrollPane1" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -83,45 +90,45 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lbl_name" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_name" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtName" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lbl_first_score" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_first_score" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtFirstScore" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txt_second_score" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtSecondScore" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lbl_second_score" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lbl_thirth_score" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_thirth_score" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtThirthScore" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txt_surname" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtSurname" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lbl_surname" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txt_skill" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtSkill" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lbl_skill" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txt_absence" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtAbsence" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lbl_absence" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txt_homework" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtHomework" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lbl_homework" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -131,48 +138,18 @@
                   <Component id="btn_calculate" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btn_add_student" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="265" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="lbl_name">
+    <Component class="javax.swing.JTextField" name="txtThirthScore">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Name"/>
+        <Property name="name" type="java.lang.String" value="txtThirthScore" noResource="true"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lbl_surname">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Surname"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txt_name">
-    </Component>
-    <Component class="javax.swing.JTextField" name="txt_surname">
-    </Component>
-    <Component class="javax.swing.JLabel" name="lbl_first_score">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="1.Exam"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lbl_second_score">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="2.Exam"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lbl_thirth_score">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="3.Exam"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txt_first_score">
-    </Component>
-    <Component class="javax.swing.JTextField" name="txt_second_score">
-    </Component>
-    <Component class="javax.swing.JTextField" name="txt_thirth_score">
     </Component>
     <Component class="javax.swing.JLabel" name="lbl_skill">
       <Properties>
@@ -189,11 +166,20 @@
         <Property name="text" type="java.lang.String" value="Homework"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txt_skill">
+    <Component class="javax.swing.JTextField" name="txtSkill">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="txtSkill" noResource="true"/>
+      </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txt_absence">
+    <Component class="javax.swing.JTextField" name="txtAbsence">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="txtAbsence" noResource="true"/>
+      </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txt_homework">
+    <Component class="javax.swing.JTextField" name="txtHomework">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="txtHomework" noResource="true"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btn_calculate">
       <Properties>
@@ -209,6 +195,51 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_add_studentActionPerformed"/>
       </Events>
     </Component>
+    <Component class="javax.swing.JLabel" name="lbl_name">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Name"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbl_surname">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Surname"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtName">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="txtName" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtSurname">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="txtSurname" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbl_first_score">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="1.Exam"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbl_second_score">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="2.Exam"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbl_thirth_score">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="3.Exam"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtFirstScore">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="txtFirstScore" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtSecondScore">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="txtSecondScore" noResource="true"/>
+      </Properties>
+    </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -216,23 +247,74 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JList" name="student_list">
+        <Component class="javax.swing.JTable" name="jTable1">
           <Properties>
-            <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-              <StringArray count="5">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
-                <StringItem index="4" value="Item 5"/>
-              </StringArray>
+            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+              <Table columnCount="9" rowCount="0">
+                <Column editable="false" title="Name" type="java.lang.Object"/>
+                <Column editable="false" title="Surname" type="java.lang.Object"/>
+                <Column editable="false" title="1.Exam" type="java.lang.Object"/>
+                <Column editable="false" title="2.Exam" type="java.lang.Object"/>
+                <Column editable="false" title="3.Exam" type="java.lang.Object"/>
+                <Column editable="false" title="Skill" type="java.lang.Object"/>
+                <Column editable="false" title="Absencel" type="java.lang.Object"/>
+                <Column editable="true" title="Homework" type="java.lang.Object"/>
+                <Column editable="false" title="Result" type="java.lang.Object"/>
+              </Table>
             </Property>
-            <Property name="layoutOrientation" type="int" value="1"/>
-            <Property name="visibleRowCount" type="int" value="1"/>
+            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+              <TableColumnModel selectionModel="0">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+              </TableColumnModel>
+            </Property>
+            <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+              <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+            </Property>
           </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
