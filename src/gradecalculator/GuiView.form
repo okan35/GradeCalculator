@@ -56,25 +56,17 @@
               </Group>
               <EmptySpace pref="295" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="153" pref="153" max="-2" attributes="0"/>
-                      <Component id="btn_calculate" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lbl_skill" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lbl_homework" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lbl_surname" alignment="0" min="-2" pref="64" max="-2" attributes="0"/>
-                          <Component id="lbl_absence" alignment="0" min="-2" pref="64" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="txtAbsence" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtSkill" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtSurname" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtHomework" alignment="0" min="-2" pref="166" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+                  <Component id="lbl_skill" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbl_homework" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbl_surname" alignment="0" min="-2" pref="64" max="-2" attributes="0"/>
+                  <Component id="lbl_absence" alignment="0" min="-2" pref="64" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Component id="txtAbsence" alignment="0" max="32767" attributes="0"/>
+                  <Component id="txtSkill" alignment="0" max="32767" attributes="0"/>
+                  <Component id="txtSurname" alignment="0" max="32767" attributes="0"/>
+                  <Component id="txtHomework" alignment="0" min="-2" pref="166" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
           </Group>
@@ -134,10 +126,7 @@
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btn_calculate" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btn_add_student" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="btn_add_student" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
@@ -179,11 +168,6 @@
     <Component class="javax.swing.JTextField" name="txtHomework">
       <Properties>
         <Property name="name" type="java.lang.String" value="txtHomework" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btn_calculate">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Calculate"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btn_add_student">
@@ -257,7 +241,7 @@
                 <Column editable="false" title="2.Exam" type="java.lang.Object"/>
                 <Column editable="false" title="3.Exam" type="java.lang.Object"/>
                 <Column editable="false" title="Skill" type="java.lang.Object"/>
-                <Column editable="false" title="Absencel" type="java.lang.Object"/>
+                <Column editable="false" title="Absence" type="java.lang.Object"/>
                 <Column editable="true" title="Homework" type="java.lang.Object"/>
                 <Column editable="false" title="Result" type="java.lang.Object"/>
               </Table>

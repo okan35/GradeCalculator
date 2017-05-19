@@ -5,7 +5,7 @@
  */
 package gradecalculator;
 
-import java.awt.event.ActionListener;
+
 import java.util.regex.Pattern;
 import javax.swing.InputVerifier;
 import javax.swing.JComponent;
@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
 class TextVerifier extends InputVerifier {
 
     private Pattern patternString;
-    private Pattern patternInteger;
+//    private Pattern patternInteger;
 
     public TextVerifier() {
     }
@@ -26,7 +26,8 @@ class TextVerifier extends InputVerifier {
 
         String name = input.getName();
         patternString = Pattern.compile("^[A-Za-z, ]++$");  //to validate just strings
-        patternInteger = Pattern.compile("\\d+"); //to validate just integers
+        //  patternInteger = Pattern.compile("\\d+"); //to validate just integers
+        // patternInteger = Pattern.compile(".*\\d+.*"); // checks if there is ANY DIGIT AT ALL
 
         if (name.equals("txtName") || name.equals("txtSurname")) {
             String text = ((JTextField) input).getText().trim();
@@ -36,30 +37,32 @@ class TextVerifier extends InputVerifier {
 
         }
 
-        if (name.equals("txtFirstScore") || name.equals("txtSecondScore") || name.equals("txtThirthScore")) {
-            String text = ((JTextField) input).getText();
-            if (!patternInteger.matcher(text).matches() || text.isEmpty()) {
-                return false;
-            }
-
-            int score = Integer.parseInt(((JTextField) input).getText());
-            if (score > 100 || score < 0) {
-                return false;
-            }
-        }
-
-        if (name.equals("txtSkill") || name.equals("txtAbsence") || name.equals("txtHomework")) {
-            String text = ((JTextField) input).getText();
-            if (!patternInteger.matcher(text).matches() ||text.isEmpty()) {
-                return false;
-            }
-
-            int score = Integer.parseInt(((JTextField) input).getText());
-            if (score > 5 || score < 0) {
-                return false;
-            }
-        }
-
+//        if (name.equals("txtFirstScore") || name.equals("txtSecondScore") || name.equals("txtThirthScore")) {
+//            String text = ((JTextField) input).getText();
+//
+//            if (!patternInteger.matcher(text).matches() || text.isEmpty()) {
+//                return false;
+//            }
+//
+//            int score = Integer.parseInt(((JTextField) input).getText());
+//            if (score > 100 || score < 0) {
+//                return false;
+//            }
+//
+//        }
+//
+//        if (name.equals("txtSkill") || name.equals("txtAbsence") || name.equals("txtHomework")) {
+//            String text = ((JTextField) input).getText();
+//
+//            if (!patternInteger.matcher(text).matches() || text.isEmpty()) {
+//                return false;
+//            }
+//
+//            int score = Integer.parseInt(((JTextField) input).getText());
+//            if (score > 5 || score < 0) {
+//                return false;
+//            }
+//        }
         return true;
     }
 
@@ -95,7 +98,6 @@ public class GuiView extends javax.swing.JFrame {
         txtSkill = new javax.swing.JTextField();
         txtAbsence = new javax.swing.JTextField();
         txtHomework = new javax.swing.JTextField();
-        btn_calculate = new javax.swing.JButton();
         btn_add_student = new javax.swing.JButton();
         lbl_name = new javax.swing.JLabel();
         lbl_surname = new javax.swing.JLabel();
@@ -124,8 +126,6 @@ public class GuiView extends javax.swing.JFrame {
         txtAbsence.setName("txtAbsence"); // NOI18N
 
         txtHomework.setName("txtHomework"); // NOI18N
-
-        btn_calculate.setText("Calculate");
 
         btn_add_student.setText("Add Student");
         btn_add_student.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -162,7 +162,7 @@ public class GuiView extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Name", "Surname", "1.Exam", "2.Exam", "3.Exam", "Skill", "Absencel", "Homework", "Result"
+                "Name", "Surname", "1.Exam", "2.Exam", "3.Exam", "Skill", "Absence", "Homework", "Result"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -204,21 +204,16 @@ public class GuiView extends javax.swing.JFrame {
                                 .addComponent(txtFirstScore, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 295, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(153, 153, 153)
-                        .addComponent(btn_calculate))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_skill)
-                            .addComponent(lbl_homework)
-                            .addComponent(lbl_surname, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_absence, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtAbsence, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtSkill, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtSurname, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtHomework, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(lbl_skill)
+                    .addComponent(lbl_homework)
+                    .addComponent(lbl_surname, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_absence, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(txtAbsence, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtSkill, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtSurname, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtHomework, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -263,9 +258,7 @@ public class GuiView extends javax.swing.JFrame {
                             .addComponent(txtHomework, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_homework))))
                 .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_calculate)
-                    .addComponent(btn_add_student))
+                .addComponent(btn_add_student)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -292,78 +285,173 @@ public class GuiView extends javax.swing.JFrame {
         if (verifier.verify(txtName)) {
             txtNameTable = txtName.getText();
         } else {
-            JOptionPane.showMessageDialog(null, "Name can not be empty");
+            JOptionPane.showMessageDialog(null, "Name is empty or values are not characters");
             txtName.setText("");
             return;
         }
         if (verifier.verify(txtSurname)) {
             txtSurnameTable = txtSurname.getText();
         } else {
-            JOptionPane.showMessageDialog(null, "Surname can not be empty");
+            JOptionPane.showMessageDialog(null, "Surname is empty or values are not characters");
             txtSurname.setText("");
             return;
         }
 
-        if (verifier.verify(txtFirstScore)) {
+        try {
             txtFirstScoreTable = Integer.parseInt(txtFirstScore.getText());
-        } else {
-            JOptionPane.showMessageDialog(null, "First score should be between 0-100 and can not be empty");
+        } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(null, "1.Exam field is empty or values are not numberic");
+            txtFirstScore.setText("");
+            return;
+        }
+        if (txtFirstScoreTable < 0 || txtFirstScoreTable > 100) {
+            JOptionPane.showMessageDialog(null, "Exam scores must be between 0-100");
             txtFirstScore.setText("");
             return;
         }
 
-        if (verifier.verify(txtSecondScore)) {
+//        if (verifier.verify(txtFirstScore)) {
+//            txtFirstScoreTable = Integer.parseInt(txtFirstScore.getText());
+//        } else {
+//            JOptionPane.showMessageDialog(null, "First score should be between 0-100 and can not be empty");
+//            txtFirstScore.setText("");
+//            return;
+//        }
+//     
+        try {
             txtSecondScoreTable = Integer.parseInt(txtSecondScore.getText());
-        } else {
-            JOptionPane.showMessageDialog(null, "Second score should be between 0-100 and can not be empty");
+        } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(null, "2.Exam field is empty or values are not numberic");
             txtSecondScore.setText("");
             return;
         }
 
-        if (verifier.verify(txtThirthScore)) {
+        if (txtSecondScoreTable < 0 || txtSecondScoreTable > 100) {
+            JOptionPane.showMessageDialog(null, "Exam scores must be between 0-100");
+            txtSecondScore.setText("");
+
+            return;
+        }
+//        if (verifier.verify(txtSecondScore)) {
+//            txtSecondScoreTable = Integer.parseInt(txtSecondScore.getText());
+//        } else {
+//            JOptionPane.showMessageDialog(null, "Second score should be between 0-100 and can not be empty");
+//            txtSecondScore.setText("");
+//            return;
+//        }
+
+        try {
             txtThirthScoreTable = Integer.parseInt(txtThirthScore.getText());
-        } else {
-            JOptionPane.showMessageDialog(null, "Thirth score should be between 0-100 and can not be empty");
+        } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(null, "3.Exam field is empty or values are not numberic");
             txtThirthScore.setText("");
             return;
         }
+        if (txtThirthScoreTable < 0 || txtThirthScoreTable > 100) {
+            JOptionPane.showMessageDialog(null, "Exam scores must be between 0-100");
+            txtThirthScore.setText("");
 
-        if (verifier.verify(txtSkill)) {
-            txtSkillTable = Integer.parseInt(txtSkill.getText());
-        } else {
-            JOptionPane.showMessageDialog(null, "Skill score should between 0-5 and can not be empty");
-            txtSkill.setText("");
             return;
         }
 
-        if (verifier.verify(txtAbsence)) {
-            txtAbsenceTable = Integer.parseInt(txtAbsence.getText());
+//        if (verifier.verify(txtThirthScore)) {
+//            txtThirthScoreTable = Integer.parseInt(txtThirthScore.getText());
+//        } else {
+//            JOptionPane.showMessageDialog(null, "Thirth score should be between 0-100 and can not be empty");
+//            txtThirthScore.setText("");
+//            return;
+//        }
+        try {
+            txtSkillTable = Integer.parseInt(txtSkill.getText());
+        } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(null, "Skill field is empty or values are not numberic");
+            txtSkill.setText("");
+            return;
 
-        } else {
-            JOptionPane.showMessageDialog(null, "Absence score should between 0-5 and can not be empty");
+        }
+        if (txtSkillTable > 5 || txtSkillTable < 0) {
+            JOptionPane.showMessageDialog(null, "Skill scores must be between 0-5");
+            txtSkill.setText("");
+            return;
+
+        }
+
+//        if (verifier.verify(txtSkill)) {
+//            txtSkillTable = Integer.parseInt(txtSkill.getText());
+//        } else {
+//            JOptionPane.showMessageDialog(null, "Skill score should between 0-5 and can not be empty");
+//            txtSkill.setText("");
+//            return;
+//        }
+        try {
+            txtAbsenceTable = Integer.parseInt(txtAbsence.getText());
+        } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(null, "Absence field is empty or values are not numberic");
+            txtAbsence.setText("");
+            return;
+
+        }
+        if (txtAbsenceTable > 5 || txtAbsenceTable < 0) {
+            JOptionPane.showMessageDialog(null, "Absence score must be between 0-5");
             txtAbsence.setText("");
             return;
 
         }
 
-        if (verifier.verify(txtHomework)) {
+//        if (verifier.verify(txtAbsence)) {
+//            txtAbsenceTable = Integer.parseInt(txtAbsence.getText());
+//
+//        } else {
+//            JOptionPane.showMessageDialog(null, "Absence score should between 0-5 and can not be empty");
+//            txtAbsence.setText("");
+//            return;
+//
+//        }
+        try {
             txtHomeworkTable = Integer.parseInt(txtHomework.getText());
+        } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(null, "Homework field is empty or values are not numberic");
+            txtHomework.setText("");
+            return;
 
+        }
+        if (txtAbsenceTable <= 5 || txtAbsenceTable >= 0) {
+            //Calculation If student failed or not. Under score 70 a student fails.
             int result = ((getTxtFirstScore() + getTxtSecondScore() + getTxtThirthScore()) / 3) + ((getTxtSkill() + getTxtAbsence() + getTxtHomework()) / 3);
-
+            //Entering validated inputs to table. Entries has to be in the same order with Jtable title design.
             Object[] row = {txtNameTable, txtSurnameTable, txtFirstScoreTable, txtSecondScoreTable, txtThirthScoreTable,
                 txtSkillTable, txtAbsenceTable, txtHomeworkTable, result};
 
             tableModel = (DefaultTableModel) jTable1.getModel();
 
             tableModel.addRow(row);
+            //After everything is done this method cleans all the fields.
             txtFieldCleaner();
+
         } else {
-            JOptionPane.showMessageDialog(null, "Homework score should between 0-5 and can not be empty");
+            JOptionPane.showMessageDialog(null, "Homework score must be between 0-5");
             txtHomework.setText("");
             return;
+
         }
 
+//        if (verifier.verify(txtHomework)) {
+//            txtHomeworkTable = Integer.parseInt(txtHomework.getText());
+//
+//            int result = ((getTxtFirstScore() + getTxtSecondScore() + getTxtThirthScore()) / 3) + ((getTxtSkill() + getTxtAbsence() + getTxtHomework()) / 3);
+//
+//            Object[] row = {txtNameTable, txtSurnameTable, txtFirstScoreTable, txtSecondScoreTable, txtThirthScoreTable,
+//                txtSkillTable, txtAbsenceTable, txtHomeworkTable, result};
+//
+//            tableModel = (DefaultTableModel) jTable1.getModel();
+//
+//            tableModel.addRow(row);
+//            txtFieldCleaner();
+//        } else {
+//            JOptionPane.showMessageDialog(null, "Homework score should between 0-5 and can not be empty");
+//            txtHomework.setText("");
+//            return;
+//        }
 
     }//GEN-LAST:event_btn_add_studentActionPerformed
 
@@ -410,54 +498,15 @@ public class GuiView extends javax.swing.JFrame {
         return Integer.parseInt(txtAbsence.getText());
     }
 
-    void addCalculateListener(ActionListener listenForCalculation) {
-        btn_calculate.addActionListener(listenForCalculation);
-    }
-
-    void displayErrorMessage(String errorMessage) {
-        JOptionPane.showMessageDialog(this, errorMessage);
-    }
-
     /**
      * @param args the command line arguments
      */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(GuiView2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(GuiView2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(GuiView2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(GuiView2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new GuiView2().setVisible(true);
-//            }
-//        });
-//    }
+
     public void run() {
         new GuiView().setVisible(true);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_add_student;
-    private javax.swing.JButton btn_calculate;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbl_absence;
