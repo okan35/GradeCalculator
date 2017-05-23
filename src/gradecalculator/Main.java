@@ -14,8 +14,6 @@ public class Main {
     public static void main(String[] args) {
 
         GuiView theView = new GuiView();
-        StudentModel theModel = new StudentModel();
-        CalculatorController theController = new CalculatorController(theModel, theView);
 
         theView.run();
 

@@ -5,77 +5,46 @@
  */
 package gradecalculator;
 
-
 import java.util.regex.Pattern;
 import javax.swing.InputVerifier;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-class TextVerifier extends InputVerifier {
-
-    private Pattern patternString;
-//    private Pattern patternInteger;
-
-    public TextVerifier() {
-    }
-
-    @Override
-    public boolean verify(JComponent input) {
-
-        String name = input.getName();
-        patternString = Pattern.compile("^[A-Za-z, ]++$");  //to validate just strings
-        //  patternInteger = Pattern.compile("\\d+"); //to validate just integers
-        // patternInteger = Pattern.compile(".*\\d+.*"); // checks if there is ANY DIGIT AT ALL
-
-        if (name.equals("txtName") || name.equals("txtSurname")) {
-            String text = ((JTextField) input).getText().trim();
-            if (!patternString.matcher(text).matches() || text.isEmpty()) {
-                return false;
-            }
-
-        }
-
-//        if (name.equals("txtFirstScore") || name.equals("txtSecondScore") || name.equals("txtThirthScore")) {
-//            String text = ((JTextField) input).getText();
+//class TextVerifier extends InputVerifier {
 //
-//            if (!patternInteger.matcher(text).matches() || text.isEmpty()) {
-//                return false;
-//            }
+//    private Pattern patternString;
+////    private Pattern patternInteger;
 //
-//            int score = Integer.parseInt(((JTextField) input).getText());
-//            if (score > 100 || score < 0) {
+//    public TextVerifier() {
+//    }
+//
+//    @Override
+//    public boolean verify(JComponent input) {
+//
+//        String name = input.getName();
+//        patternString = Pattern.compile("^[A-Za-z, ]++$");  //to validate just strings
+//        // patternInteger = Pattern.compile(".*\\d+.*"); // checks if there is ANY DIGIT AT ALL
+//
+//        if (name.equals("txtName") || name.equals("txtSurname")) {
+//            String text = ((JTextField) input).getText().trim();
+//            if (!patternString.matcher(text).matches() || text.isEmpty()) {
 //                return false;
 //            }
 //
 //        }
+//        return true;
+//    }
 //
-//        if (name.equals("txtSkill") || name.equals("txtAbsence") || name.equals("txtHomework")) {
-//            String text = ((JTextField) input).getText();
-//
-//            if (!patternInteger.matcher(text).matches() || text.isEmpty()) {
-//                return false;
-//            }
-//
-//            int score = Integer.parseInt(((JTextField) input).getText());
-//            if (score > 5 || score < 0) {
-//                return false;
-//            }
-//        }
-        return true;
-    }
-
-}
-
+//}
 public class GuiView extends javax.swing.JFrame {
 
-    /**
-     * Creates new form GuiView2
-     */
+    
     private StudentModel theModel = new StudentModel();
     private CalculatorController theController = new CalculatorController(theModel, this);
-    private TextVerifier verifier = new TextVerifier();
+    //private TextVerifier verifier = new TextVerifier();
     DefaultTableModel tableModel;
 
     public GuiView() {
@@ -173,6 +142,7 @@ public class GuiView extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.setName("studentResultTable"); // NOI18N
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -271,199 +241,50 @@ public class GuiView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_add_studentMouseClicked
 
+    public JTable getJTable1Component() {
+        return jTable1;
+    }
+
+    public void setJTable1Component(JTable jTable1) {
+        this.jTable1 = jTable1;
+    }
+
     private void btn_add_studentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add_studentActionPerformed
-        // TODO add your handling code here:
-        String txtNameTable;
-        String txtSurnameTable;
-        int txtFirstScoreTable;
-        int txtSecondScoreTable;
-        int txtThirthScoreTable;
-        int txtSkillTable;
-        int txtHomeworkTable;
-        int txtAbsenceTable;
 
-        if (verifier.verify(txtName)) {
-            txtNameTable = txtName.getText();
-        } else {
-            JOptionPane.showMessageDialog(null, "Name is empty or values are not characters");
-            txtName.setText("");
-            return;
-        }
-        if (verifier.verify(txtSurname)) {
-            txtSurnameTable = txtSurname.getText();
-        } else {
-            JOptionPane.showMessageDialog(null, "Surname is empty or values are not characters");
-            txtSurname.setText("");
-            return;
-        }
-
-        try {
-            txtFirstScoreTable = Integer.parseInt(txtFirstScore.getText());
-        } catch (NumberFormatException nfe) {
-            JOptionPane.showMessageDialog(null, "1.Exam field is empty or values are not numberic");
-            txtFirstScore.setText("");
-            return;
-        }
-        if (txtFirstScoreTable < 0 || txtFirstScoreTable > 100) {
-            JOptionPane.showMessageDialog(null, "Exam scores must be between 0-100");
-            txtFirstScore.setText("");
-            return;
-        }
-
-//        if (verifier.verify(txtFirstScore)) {
-//            txtFirstScoreTable = Integer.parseInt(txtFirstScore.getText());
-//        } else {
-//            JOptionPane.showMessageDialog(null, "First score should be between 0-100 and can not be empty");
-//            txtFirstScore.setText("");
-//            return;
-//        }
-//     
-        try {
-            txtSecondScoreTable = Integer.parseInt(txtSecondScore.getText());
-        } catch (NumberFormatException nfe) {
-            JOptionPane.showMessageDialog(null, "2.Exam field is empty or values are not numberic");
-            txtSecondScore.setText("");
-            return;
-        }
-
-        if (txtSecondScoreTable < 0 || txtSecondScoreTable > 100) {
-            JOptionPane.showMessageDialog(null, "Exam scores must be between 0-100");
-            txtSecondScore.setText("");
-
-            return;
-        }
-//        if (verifier.verify(txtSecondScore)) {
-//            txtSecondScoreTable = Integer.parseInt(txtSecondScore.getText());
-//        } else {
-//            JOptionPane.showMessageDialog(null, "Second score should be between 0-100 and can not be empty");
-//            txtSecondScore.setText("");
-//            return;
-//        }
-
-        try {
-            txtThirthScoreTable = Integer.parseInt(txtThirthScore.getText());
-        } catch (NumberFormatException nfe) {
-            JOptionPane.showMessageDialog(null, "3.Exam field is empty or values are not numberic");
-            txtThirthScore.setText("");
-            return;
-        }
-        if (txtThirthScoreTable < 0 || txtThirthScoreTable > 100) {
-            JOptionPane.showMessageDialog(null, "Exam scores must be between 0-100");
-            txtThirthScore.setText("");
-
-            return;
-        }
-
-//        if (verifier.verify(txtThirthScore)) {
-//            txtThirthScoreTable = Integer.parseInt(txtThirthScore.getText());
-//        } else {
-//            JOptionPane.showMessageDialog(null, "Thirth score should be between 0-100 and can not be empty");
-//            txtThirthScore.setText("");
-//            return;
-//        }
-        try {
-            txtSkillTable = Integer.parseInt(txtSkill.getText());
-        } catch (NumberFormatException nfe) {
-            JOptionPane.showMessageDialog(null, "Skill field is empty or values are not numberic");
-            txtSkill.setText("");
-            return;
-
-        }
-        if (txtSkillTable > 5 || txtSkillTable < 0) {
-            JOptionPane.showMessageDialog(null, "Skill scores must be between 0-5");
-            txtSkill.setText("");
-            return;
-
-        }
-
-//        if (verifier.verify(txtSkill)) {
-//            txtSkillTable = Integer.parseInt(txtSkill.getText());
-//        } else {
-//            JOptionPane.showMessageDialog(null, "Skill score should between 0-5 and can not be empty");
-//            txtSkill.setText("");
-//            return;
-//        }
-        try {
-            txtAbsenceTable = Integer.parseInt(txtAbsence.getText());
-        } catch (NumberFormatException nfe) {
-            JOptionPane.showMessageDialog(null, "Absence field is empty or values are not numberic");
-            txtAbsence.setText("");
-            return;
-
-        }
-        if (txtAbsenceTable > 5 || txtAbsenceTable < 0) {
-            JOptionPane.showMessageDialog(null, "Absence score must be between 0-5");
-            txtAbsence.setText("");
-            return;
-
-        }
-
-//        if (verifier.verify(txtAbsence)) {
-//            txtAbsenceTable = Integer.parseInt(txtAbsence.getText());
-//
-//        } else {
-//            JOptionPane.showMessageDialog(null, "Absence score should between 0-5 and can not be empty");
-//            txtAbsence.setText("");
-//            return;
-//
-//        }
-        try {
-            txtHomeworkTable = Integer.parseInt(txtHomework.getText());
-        } catch (NumberFormatException nfe) {
-            JOptionPane.showMessageDialog(null, "Homework field is empty or values are not numberic");
-            txtHomework.setText("");
-            return;
-
-        }
-        if (txtAbsenceTable <= 5 || txtAbsenceTable >= 0) {
-            //Calculation If student failed or not. Under score 70 a student fails.
-            int result = ((getTxtFirstScore() + getTxtSecondScore() + getTxtThirthScore()) / 3) + ((getTxtSkill() + getTxtAbsence() + getTxtHomework()) / 3);
-            //Entering validated inputs to table. Entries has to be in the same order with Jtable title design.
-            Object[] row = {txtNameTable, txtSurnameTable, txtFirstScoreTable, txtSecondScoreTable, txtThirthScoreTable,
-                txtSkillTable, txtAbsenceTable, txtHomeworkTable, result};
-
-            tableModel = (DefaultTableModel) jTable1.getModel();
-
-            tableModel.addRow(row);
-            //After everything is done this method cleans all the fields.
-            txtFieldCleaner();
-
-        } else {
-            JOptionPane.showMessageDialog(null, "Homework score must be between 0-5");
-            txtHomework.setText("");
-            return;
-
-        }
-
-//        if (verifier.verify(txtHomework)) {
-//            txtHomeworkTable = Integer.parseInt(txtHomework.getText());
-//
-//            int result = ((getTxtFirstScore() + getTxtSecondScore() + getTxtThirthScore()) / 3) + ((getTxtSkill() + getTxtAbsence() + getTxtHomework()) / 3);
-//
-//            Object[] row = {txtNameTable, txtSurnameTable, txtFirstScoreTable, txtSecondScoreTable, txtThirthScoreTable,
-//                txtSkillTable, txtAbsenceTable, txtHomeworkTable, result};
-//
-//            tableModel = (DefaultTableModel) jTable1.getModel();
-//
-//            tableModel.addRow(row);
-//            txtFieldCleaner();
-//        } else {
-//            JOptionPane.showMessageDialog(null, "Homework score should between 0-5 and can not be empty");
-//            txtHomework.setText("");
-//            return;
-//        }
+        theController.validator();
 
     }//GEN-LAST:event_btn_add_studentActionPerformed
 
-    void txtFieldCleaner() {
-        txtAbsence.setText("");
-        txtFirstScore.setText("");
-        txtHomework.setText("");
-        txtName.setText("");
-        txtSecondScore.setText("");
-        txtSkill.setText("");
-        txtSurname.setText("");
-        txtThirthScore.setText("");
+    public JTextField getTxtNameComponent() {
+        return txtName;
+    }
+
+    public JTextField getTxtSurnameComponent() {
+        return txtSurname;
+    }
+
+    public JTextField getTxtFirstScoreComponent() {
+        return txtFirstScore;
+    }
+
+    public JTextField getTxtSecondScoreComponent() {
+        return txtSecondScore;
+    }
+
+    public JTextField getTxtThirthScoreComponent() {
+        return txtThirthScore;
+    }
+
+    public JTextField getTxtSkillComponent() {
+        return txtSkill;
+    }
+
+    public JTextField getTxtAbsenceComponent() {
+        return txtAbsence;
+    }
+
+    public JTextField getTxtHomeworkComponent() {
+        return txtHomework;
     }
 
     public String getTxtName() {
@@ -501,7 +322,6 @@ public class GuiView extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-
     public void run() {
         new GuiView().setVisible(true);
     }

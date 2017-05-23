@@ -19,7 +19,7 @@ public class StudentModel {
     private int skillScore;
     private int absenceScore;
     private int homeworkScore;
-    private static final int LIMIT = 70;
+   
 
     public String getStudentName() {
         return studentName;
@@ -85,11 +85,6 @@ public class StudentModel {
         this.homeworkScore = homeworkScore;
     }
     
-     public boolean calculator() {
-        int examAverage = (firstScore + secondScore + thirthScore) / 3;
-        int skillAverage = (skillScore + absenceScore + homeworkScore) / 3;
-
-        return examAverage + skillAverage >= LIMIT;
-    }
+   
 
 }
